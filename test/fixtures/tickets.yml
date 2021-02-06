@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan_id: 1
+  name: MyString
+  switch_name: MyString
+  number_of_times: 1
+  order: 1
+  comment: MyString
+
+two:
+  plan_id: 1
+  name: MyString
+  switch_name: MyString
+  number_of_times: 1
+  order: 1
+  comment: MyString
