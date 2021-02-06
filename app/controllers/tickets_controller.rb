@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets or /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.with_deleted
     render json:@tickets
   end
 
