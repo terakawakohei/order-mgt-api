@@ -46,6 +46,11 @@ class TicketsController < ApplicationController
     render json: { status: 'SUCCESS', message: 'Deleted the ticket', data: @ticket }
   end
 
+  def ticket_restore
+    @ticket =  Ticket.only_deleted.find(params[:id]).restore
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
