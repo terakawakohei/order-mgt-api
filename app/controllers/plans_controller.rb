@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: %i[ show edit update destroy ]
+  protect_from_forgery
 
   # GET /plans or /plans.json
   def index
@@ -37,24 +38,17 @@ class PlansController < ApplicationController
 
   # PATCH/PUT /plans/1 or /plans/1.json
   def update
-    respond_to do |format|
-      if @plan.update(plan_params)
-        format.html { redirect_to @plan, notice: "Plan was successfully updated." }
-        format.json { render :show, status: :ok, location: @plan }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @plan.errors, status: :unprocessable_entity }
-      end
+    if @plan.update(plan_params)
+      render json: { status: 'SUCCESS', message: 'Updated the plan', data: @plan }
+    else
+      render json: { status: 'SUCCESS', message: 'Not updated', data: @plan.errors }
     end
   end
 
   # DELETE /plans/1 or /plans/1.json
   def destroy
     @plan.destroy
-    respond_to do |format|
-      format.html { redirect_to plans_url, notice: "Plan was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: { status: 'SUCCESS', message: 'Deleted the plan', data: @paln }
   end
 
   private
